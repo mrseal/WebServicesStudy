@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.cf.study.webservices</groupId>
+	<artifactId>RestfulServiceAsHttpServlet</artifactId>
+	<version>1.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<version.javaee.web.api>6.0</version.javaee.web.api>
+		<version.slf4j.api>1.7.5</version.slf4j.api>
+		<version.json>20140107</version.json>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${version.slf4j.api}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>${version.json}</version>
+		</dependency>
+	</dependencies>
+
+	<modules>
+		<module>RestfulServiceAsHttpServlet-war</module>
+	</modules>
+</project>
