@@ -7,7 +7,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<version.javaee.web.api>6.0</version.javaee.web.api>
+		<version.javaee.web.api>7.0</version.javaee.web.api>
 		<version.slf4j.api>1.7.5</version.slf4j.api>
 		<version.json>20140107</version.json>
 	</properties>
@@ -25,6 +25,20 @@
 			<version>${version.json}</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 	<modules>
 		<module>RestfulServiceAsHttpServlet-war</module>
