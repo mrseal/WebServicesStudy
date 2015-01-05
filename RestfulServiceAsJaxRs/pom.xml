@@ -8,6 +8,7 @@
 
 	<properties>
 		<version.javaee.web.api>7.0</version.javaee.web.api>
+		<version.jackson.mapper.asl>1.8.5</version.jackson.mapper.asl>
 	</properties>
 
 	<build>

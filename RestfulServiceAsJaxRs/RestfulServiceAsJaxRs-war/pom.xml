@@ -36,5 +36,10 @@
 			<artifactId>javaee-web-api</artifactId>
 			<version>${version.javaee.web.api}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${version.jackson.mapper.asl}</version>
+		</dependency>
 	</dependencies>
 </project>
