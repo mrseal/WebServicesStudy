@@ -16,6 +16,7 @@ import java.util.Random;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBElement;
@@ -29,31 +30,38 @@ import com.cf.study.webservice.restful.jaxrs.Adage;
 @Path("/")
 public class Adages {
 
-    private final String[] aphorisms = { "What can be shown cannot be said.", "If a lion could talk, we could not understand him.",
-            "Philosophy is a battle against the bewitchment of our intelligence by means of language.", "Ambition is the death of thought.",
-    "The limits of my language mean the limits of my world." };
+    private final String[] aphorisms = { "1. What can be shown cannot be said.", "2. If a lion could talk, we could not understand him.",
+            "3. Philosophy is a battle against the bewitchment of our intelligence by means of language.", "4. Ambition is the death of thought.",
+    "5. The limits of my language mean the limits of my world." };
 
     @GET
+    @Path("/{id: \\d+}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String getPlain() {
-        return createAdage().toString();
+    public String getPlain(@PathParam("id") final int id) {
+        return createAdage(id).toString();
     }
 
     @GET
+    @Path("/{id: \\d+}")
     @Produces(MediaType.APPLICATION_XML)
-    public JAXBElement<Adage> getXml() {
-        return toXml(createAdage());
+    public JAXBElement<Adage> getXml(@PathParam("id") final int id) {
+        return toXml(createAdage(id));
     }
 
     @GET
+    @Path("/{id: \\d+}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson() {
-        return toJson(createAdage());
+    public String getJson(@PathParam("id") final int id) {
+        return toJson(createAdage(id));
     }
 
-    private Adage createAdage() {
+    private Adage createAdage(final int index) {
+        int key = index - 1;
         final Adage adage = new Adage();
-        adage.setWords(aphorisms[new Random().nextInt(aphorisms.length)]);
+        if (key == -1) {
+            key = new Random().nextInt(aphorisms.length);
+        }
+        adage.setWords(aphorisms[key]);
         return adage;
     }
 
