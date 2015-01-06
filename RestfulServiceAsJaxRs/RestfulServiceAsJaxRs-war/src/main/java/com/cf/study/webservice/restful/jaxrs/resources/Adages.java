@@ -19,6 +19,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.namespace.QName;
@@ -32,7 +33,7 @@ public class Adages {
 
     private final String[] aphorisms = { "1. What can be shown cannot be said.", "2. If a lion could talk, we could not understand him.",
             "3. Philosophy is a battle against the bewitchment of our intelligence by means of language.", "4. Ambition is the death of thought.",
-    "5. The limits of my language mean the limits of my world." };
+            "5. The limits of my language mean the limits of my world." };
 
     @GET
     @Path("/{id: \\d+}")
@@ -53,6 +54,27 @@ public class Adages {
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson(@PathParam("id") final int id) {
         return toJson(createAdage(id));
+    }
+
+    @GET
+    @Path("/response/{id: \\d+}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response getResponsePlain(@PathParam("id") final int id) {
+        return Response.ok(createAdage(id).toString(), "text/plain").build();
+    }
+
+    @GET
+    @Path("/response/{id: \\d+}")
+    @Produces(MediaType.APPLICATION_XML)
+    public Response getResponseXml(@PathParam("id") final int id) {
+        return Response.ok(createAdage(id), "application/xml").build();
+    }
+
+    @GET
+    @Path("/response/{id: \\d+}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getResponseJson(@PathParam("id") final int id) {
+        return Response.ok(toJson(createAdage(id)), "application/json").build();
     }
 
     private Adage createAdage(final int index) {
