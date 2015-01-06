@@ -25,7 +25,6 @@
 		</plugins>
 	</build>
 
-
 	<modules>
 		<module>RestfulServiceAsJaxRs-war</module>
 	</modules>
