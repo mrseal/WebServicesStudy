@@ -10,6 +10,9 @@ import org.restlet.routing.Router;
 
 import com.cf.study.webservice.restful.restlet.Adage;
 import com.cf.study.webservice.restful.restlet.Adages;
+import com.cf.study.webservice.restful.restlet.resources.CreateResource;
+import com.cf.study.webservice.restful.restlet.resources.PlainResource;
+import com.cf.study.webservice.restful.restlet.resources.XmlAllResource;
 
 public class AdagesApplication extends Application {
 
@@ -53,11 +56,11 @@ public class AdagesApplication extends Application {
         final Router router = new Router(getContext());
 
         // Resource as an individual class
-        // router.attach("/", PlainResource.class);
-        // router.attach("/xml", XmlOneResource.class);
+        router.attach("/", PlainResource.class);
+        router.attach("/xml", XmlAllResource.class);
         // router.attach("/xml/{id}", XmlOneResource.class);
         // router.attach("/json", JsonAllResource.class);
-        // router.attach("/create", CreateResource.class);
+        router.attach("/create", CreateResource.class);
         // router.attach("/update", UpdateResource.class);
 
         // Resource as an anonymous resource

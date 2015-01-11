@@ -19,6 +19,7 @@ public class PlainResource extends ServerResource {
         final StringBuilder sb = new StringBuilder();
         for (final Adage adage : list) {
             sb.append(adage.toString());
+            sb.append("\n");
         }
         final StringRepresentation result = new StringRepresentation(sb.toString(), MediaType.TEXT_PLAIN);
         return result;
